@@ -134,7 +134,7 @@ app.post("/password", (req, res) => {
   }
 });
 
-app.patch("/voter", (req, reponse) => {
+/*app.patch("/voter", (req, reponse) => {
   let voixpresi = req.body.choixpresi;
   let voicomp=req.body.choixpresicompte;
   let emailvotant = req.body.emailelecteur;
@@ -166,7 +166,7 @@ app.patch("/voter", (req, reponse) => {
   } else {
     reponse.status(400).json({message:"cet email ne vote pas "});
   }
-});
+});*/
 app.get('/allvotant', (req,res)=>{
   connection.query('SELECT COUNT(*) as votant FROM electeur WHERE nbrefois=1',(err,result)=>{
     if(!err){
