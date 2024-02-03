@@ -79,10 +79,6 @@ app.post("/testmail", (req, res) => {
           console.log(result[0].password)
           // l'email est valide , on crée alors un mot de passe `
           // Generate a random password of 10 characters
-          if(result[0].password !='') {
-            console.log(result.password)
-            res.status(200).send("true")
-          } else {
             console.log(result[0].password)
             console.log("Hello")
             const password = generateRandomPassword(6)   
@@ -108,7 +104,7 @@ app.post("/testmail", (req, res) => {
                 })
               }
             });
-          }
+        
        
         }
       }
@@ -173,6 +169,13 @@ app.patch("/voter", (req, reponse) => {
 });
 app.get('/allvotant', (req,res)=>{
   connection.query('SELECT COUNT(*) as votant FROM electeur WHERE nbrefois=1',(err,result)=>{
+    if(!err){
+      res.send(result)
+    }else res.send(false)
+  })
+})
+app.get('/allelecteur', (req,res)=>{
+  connection.query('SELECT *  FROM electeur WHERE nbrefois=1 ',(err,result)=>{
     if(!err){
       res.send(result)
     }else res.send(false)
